@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>ros_namespace_example</name>
+  <name>ros_topic_name_example</name>
   <version>0.0.0</version>
-  <description>The ros_namespace_example package</description>
+  <description>The ros_topic_name_example package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
