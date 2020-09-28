@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- logShow = log; screen; -->
+    <arg name="log_show" default="screen"/>
+    <arg name="group_flag" default="true"/>
+
+
+
+    <node pkg="ros_namespace_example" type="robot.py" name="robot_launch1" output="$(arg log_show)" /> <!--ignore anonymous-->
+    <!--topic: /my_position-->
+    <node pkg="ros_namespace_example" type="robot.py" name="robot_launch2" output="$(arg log_show)" /> <!--ignore anonymous-->
+    <!--topic: /my_position-->
+
+    <node pkg="ros_namespace_example" type="robot_tildeNodeName.py" name="robot_launch3" output="$(arg log_show)" />
+    <!--topic: robot_launch3/my_position-->
+    <node pkg="ros_namespace_example" type="robot_tildeNodeName.py" name="robot_launch4" output="$(arg log_show)" />
+    <!--topic: robot_launch4/my_position-->
+
+
+    <node pkg="ros_namespace_example" type="robot.py" name="robot_launch5" ns="namespace" output="$(arg log_show)" />
+    <!--topic: namespace/my_position-->
+    <node pkg="ros_namespace_example" type="robot_tildeNodeName.py" name="robot_launch6" ns="namespace" output="$(arg log_show)" />
+    <!--topic: namespace/robot_launch6/my_position-->
+
+    <group ns="group_namespace" if="$(arg group_flag)">
+        <node pkg="ros_namespace_example" type="robot_tildeNodeName.py" name="robot_launch7" output="$(arg log_show)" />
+        <!--topic: /group_namespace/robot_launch7/my_position -->
+        <node pkg="ros_namespace_example" type="robot_tildeNodeName.py" name="robot_launch8" ns="namespace" output="$(arg log_show)" />
+        <!--topic: /group_namespace/namespace/robot_launch8/my_position -->
+    </group>
+
+</launch>
